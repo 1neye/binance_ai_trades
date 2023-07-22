@@ -1,20 +1,27 @@
 import React from 'react'
-import TextInput from './components/TextInput'
-import SubmitButton from './components/SubmitButton'
-import FullCenter from './containers/FullCenter'
+import { Route, Routes } from 'react-router-dom';
+import Layout from './containers/App/Layout';
+import LoginPage from './containers/LoginPage/LoginPage';
+
+
+
+
 
 const App = () => {
 
-  let [logInput, setLogInput] = React.useState('')
-  return (
-   
-      <FullCenter>
-         <div style={{width: '384px', padding: '30px'}}>
-      <TextInput value={logInput} setValue={setLogInput} label={'Binance api key'} />
-      <SubmitButton>Submit</SubmitButton>
-      </div>
-      </FullCenter>
-   
+  return (<Routes>
+    <Route path="/" element={<Layout />}>
+    <Route index element={<LoginPage />} /> 
+      {/* <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="dashboard" element={<Dashboard />} />
+
+      {/* Using path="*"" means "match anything", so this route
+            acts like a catch-all for URLs that we don't have explicit
+            routes for. */}
+      <Route path="*" element={<div>No match</div>} />
+    </Route>
+  </Routes>
   )
 }
 
